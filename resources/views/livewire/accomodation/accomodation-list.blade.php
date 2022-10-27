@@ -32,7 +32,7 @@
     </div>
 
     <!-- The Modal -->
-    <div wire.ignore.self class="modal fade" id="accomodationModal" tabindex="-1" role="dialog" aria-labelledby="accomodationModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div wire.ignore.self class="modal fade" id="accomodationModal" tabindex="-1" role="dialog" aria-labelledby="accomodationModal" aria-bs-hidden="true" data-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog" role="document">
             <livewire:accomodation.accomodation-form />
         </div>

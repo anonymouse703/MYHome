@@ -13,20 +13,13 @@ class AccomodationList extends Component
     public $accomodationId;
 
     protected $listeners = [
-        'refreshParentStatus' => '$refresh',
+        'refreshParentAccomodation' => '$refresh',
         'deleteAccomodation',
         'editAccomodation',
         'deleteConfirmAccomodation'
     ];
 
-    public function showEmitedFlashMessage($action)
-    {
-        // dd($action);
-
-        $this->action = $action;
-        $this->emit('flashAction', $this->action);
-    }
-
+  
     public function render()
     {
         return view('livewire.accomodation.accomodation-list');

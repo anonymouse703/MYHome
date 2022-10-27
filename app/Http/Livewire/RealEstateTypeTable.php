@@ -14,6 +14,16 @@ final class RealEstateTypeTable extends PowerGridComponent
 {
     use ActionButton;
 
+    protected function getListeners(): array
+    {
+        return array_merge(
+            parent::getListeners(),
+            [
+                'refreshTable'   => '$refresh',
+            ]
+        );
+    }
+
     /*
     |--------------------------------------------------------------------------
     |  Features Setup
@@ -87,10 +97,7 @@ final class RealEstateTypeTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('name')
-            ->addColumn('name_lower', fn (RealEstateType $model) => strtolower(e($model->name)))
-            ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (RealEstateType $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('real_estate_type');
     }
 
     /*
@@ -114,17 +121,10 @@ final class RealEstateTypeTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Name', 'name')
+            Column::make('Real Estate Type', 'real_estate_type')
                 ->searchable()
-                ->makeInputText('name')
+                ->makeInputText('real_estate_type')
                 ->sortable(),
-
-            Column::make('Created at', 'created_at')
-                ->hidden(),
-
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->makeInputDatePicker()
-                ->searchable()
         ];
     }
 
@@ -142,21 +142,20 @@ final class RealEstateTypeTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+    
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('real-estate-type.edit', ['real-estate-type' => 'id']),
+        return [
+            Button::make('edit', 'Edit')
+            ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+            ->emit('editRealEstateType', ['key' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('real-estate-type.destroy', ['real-estate-type' => 'id'])
-               ->method('delete')
+            Button::make('destroy', 'Delete')
+            ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+            ->emit('deleteConfirmRealEstateType', ['key' => 'id']),
         ];
     }
-    */
+    
 
     /*
     |--------------------------------------------------------------------------

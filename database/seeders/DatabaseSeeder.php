@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CompanySeeder::class,
             UserSeeder::class,
             AccomodationSeeder::class,
+            RealEstateTypeSeeder::class,
         ]);
     }
 }

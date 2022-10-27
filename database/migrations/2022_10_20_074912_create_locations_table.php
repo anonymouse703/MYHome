@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('province');
             $table->string('country');
-            $table->string('location_speech');
+            $table->string('sketch')->nullable();
             $table->timestamps();
         });
     }

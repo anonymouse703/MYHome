@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Accomodation\AccomodationList;
+use App\Http\Livewire\RealEstateType\RealEstateTypeList;
+use App\Http\Livewire\Client\ClientList;
+use App\Http\Livewire\Company\CompanyList;
+use App\Http\Livewire\Location\LocationList;
+use App\Http\Livewire\User\UserList;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +37,9 @@ Route::group(['middleware' => [
     return view('dashboard');
     })->name('dashboard');
     Route::get('/accomodation', AccomodationList::class)->name('accomodation');
+    Route::get('/real-estate-type',RealEstateTypeList::class)->name('real-estate-type');
+    Route::get('/client', ClientList::class)->name('client');
+    Route::get('/company', CompanyList::class)->name('company');
+    Route::get('/location', LocationList::class)->name('location');
+    Route::get('/user', UserList::class)->name('user');
 });

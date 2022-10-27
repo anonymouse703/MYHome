@@ -34,7 +34,7 @@ class AccomodationForm extends Component
     {
         $this->accomodationId = $accomodationId;
         // dd($this->discountId);
-        $accomodations = Accomodation::whereId($accomodationId)->first();
+        $accomodations = Accomodation::findOrFail($accomodationId)->first();
         $this->accomodation = $accomodations->accomodation;
     }
 
@@ -50,11 +50,16 @@ class AccomodationForm extends Component
         if ($this->accomodationId) {
             Accomodation::whereId($this->accomodationId)->first()->update($data);
             $action = 'edit';
+            $message = 'Accomodation Successfully Updated';
+            // dd($action);
+            $this->emit('flashAction', $action, $message);
         } else {
             Accomodation::create($data);
             $action = 'store';
+            $message = 'Accomodation Successfully Updated';
+            // dd($action);
+            $this->emit('flashAction', $action, $message);
         }
-        $this->emit('showEmitedFlashMessage', $action);
         $this->resetInputFields();
         $this->emit('closeAccomodationModal');
         $this->emit('refreshParentAccomodation');

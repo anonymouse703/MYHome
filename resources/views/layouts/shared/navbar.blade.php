@@ -67,7 +67,7 @@
                         <!-- Layouts submenu list -->
                         <ul class="mininav-content nav collapse">
                             <li class="nav-item">
-                                <a href="/user" class="nav-link">Users</a>
+                                <a href="{{route('user')}}" class="nav-link">Users</a>
                             </li>
                             <li class="nav-item">
                                 <a href="layouts/minimal-navigation/index.html" class="nav-link">Users Logs</a>
@@ -80,7 +80,7 @@
 
                     <!-- Regular menu link -->
                     <li class="nav-item">
-                        <a href="widgets/index.html" class="nav-link mininav-toggle"><i class="fa-solid fa-table-list fs-5 me-2" style="height:15px; width:15px"></i>
+                        <a href="{{route('client')}}" class="nav-link mininav-toggle"><i class="fa-solid fa-table-list fs-5 me-2" style="height:15px; width:15px"></i>
 
                             <span class="nav-label mininav-content ms-1">Client Record Management</span>
                         </a>
@@ -97,13 +97,13 @@
                         <!-- Layouts submenu list -->
                         <ul class="mininav-content nav collapse">
                             <li class="nav-item">
-                                <a href="layouts/minimal-navigation/index.html" class="nav-link">Real Estate Company</a>
+                                <a href="{{route('company')}}" class="nav-link">Real Estate Company</a>
                             </li>
                             <li class="nav-item">
-                                <a href="layouts/minimal-navigation/index.html" class="nav-link">House/Unit Profile</a>
+                                <a href="" class="nav-link">House/Unit Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a href="layouts/minimal-navigation/index.html" class="nav-link">Locations</a>
+                                <a href="{{route('location')}}" class="nav-link">Locations</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('accomodation')}}" class="nav-link">Accomodations</a>
@@ -155,7 +155,7 @@
                         <!-- Forms submenu list -->
                         <ul class="mininav-content nav collapse">
                             <li class="nav-item">
-                                <a href="forms/general/index.html" class="nav-link">Real Estate Type</a>
+                                <a href="{{route('real-estate-type')}}" class="nav-link">Real Estate Type</a>
                             </li>
                             <li class="nav-item">
                                 <a href="forms/tags/index.html" class="nav-link">Permission</a>

@@ -10,15 +10,16 @@
     });
 
 
-    window.livewire.on('closeDepartmentModal', () => {
-        $('#departmentModal').modal('hide');
+    window.livewire.on('closeRealEstateTypeModal', () => {
+        $('#realEstateTypeModal').modal('hide');
     });
 
-    window.livewire.on('openDepartmentModal', () => {
-        $('#departmentModal').modal('show');
+    window.livewire.on('openRealEstateTypeModal', () => {
+
+        $('#realEstateTypeModal').modal('show');
     });
 
-    window.addEventListener('confirmDepartmentDelete', event => {
+    window.addEventListener('confirmRealEstateTypeDelete', event => {
         // alert('hey click');
         swal.fire({
             title: event.detail.title,
@@ -30,7 +31,7 @@
             confirmButtonText: event.detail.confirmButtonText,
         }).then((result) => {
             if (result.isConfirmed) {
-                window.livewire.emit('deleteDepartment', event.detail.id)
+                window.livewire.emit('deleteRealEstateType', event.detail.id)
                 swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
