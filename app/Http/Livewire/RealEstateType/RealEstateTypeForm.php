@@ -50,15 +50,12 @@ class RealEstateTypeForm extends Component
             RealEstateType::whereId($this->realEstateTypeId)->first()->update($data);
             $action = 'edit';
             $message = 'Real Estate Type Successfully Updated';
-            // dd($action);
-            $this->emit('flashAction', $action, $message);
         } else {
             RealEstateType::create($data);
             $action = 'store';
             $message = 'Real Estate Type Successfully Updated';
-            // dd($action);
-            $this->emit('flashAction', $action, $message);
         }
+        $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
         $this->emit('closeRealEstateTypeModal');
         $this->emit('refreshParentRealEstateType');

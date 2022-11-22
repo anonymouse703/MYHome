@@ -93,14 +93,12 @@ class LocationForm extends Component
             $action = 'edit';
             $message = 'Location Successfully Updated';
             // dd($action);
-            $this->emit('flashAction', $action, $message);
         } else {
             Location::create($data);
             $action = 'store';
             $message = 'Location Successfully Updated';
-            // dd($action);
-            $this->emit('flashAction', $action, $message);
         }
+        $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
         $this->emit('closeLocationModal');
         $this->emit('refreshParentLocation');

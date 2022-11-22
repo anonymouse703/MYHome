@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class ClientType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['client_type_id','last_name','first_name','middle_name','address','contact_no','email'];
+    protected $fillable = ['client_type'];
 }

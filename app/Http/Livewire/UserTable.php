@@ -87,10 +87,11 @@ final class UserTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('name')
-            ->addColumn('name_lower', fn (User $model) => strtolower(e($model->name)))
-            ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('name', function (User $user) {
+                return $user->first_name . ' ' .','. ' ' . $user->last_name . ' ' .','. ' ' .$user->middle_name; // or "$model->first_name $model->last_name"
+            })
+            ->addColumn('username')
+            ->addColumn('email');
     }
 
     /*
@@ -110,21 +111,20 @@ final class UserTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
+
+            Column::add()
+                ->title('Name')
+                ->field('name')
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Name', 'name')
+            Column::make('Username', 'username')
                 ->searchable()
-                ->makeInputText('name')
                 ->sortable(),
 
-            Column::make('Created at', 'created_at')
-                ->hidden(),
-
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->makeInputDatePicker()
+            Column::make('Email', 'email')
                 ->searchable()
+                ->sortable(),
         ];
     }
 
@@ -142,21 +142,20 @@ final class UserTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+    
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('user.edit', ['user' => 'id']),
+        return [
+            Button::make('edit', 'Edit')
+            ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+            ->emit('editUser', ['key' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('user.destroy', ['user' => 'id'])
-               ->method('delete')
+            Button::make('destroy', 'Delete')
+            ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+            ->emit('deleteConfirmUser', ['key' => 'id']),
         ];
     }
-    */
+    
 
     /*
     |--------------------------------------------------------------------------

@@ -51,15 +51,13 @@ class AccomodationForm extends Component
             Accomodation::whereId($this->accomodationId)->first()->update($data);
             $action = 'edit';
             $message = 'Accomodation Successfully Updated';
-            // dd($action);
-            $this->emit('flashAction', $action, $message);
         } else {
             Accomodation::create($data);
             $action = 'store';
             $message = 'Accomodation Successfully Updated';
-            // dd($action);
-            $this->emit('flashAction', $action, $message);
+           
         }
+        $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
         $this->emit('closeAccomodationModal');
         $this->emit('refreshParentAccomodation');

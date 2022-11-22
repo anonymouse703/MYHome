@@ -10,15 +10,15 @@
     });
 
 
-    window.livewire.on('closeDepartmentModal', () => {
-        $('#departmentModal').modal('hide');
+    window.livewire.on('closeUserModal', () => {
+        $('#userModal').modal('hide');
     });
 
-    window.livewire.on('openDepartmentModal', () => {
-        $('#departmentModal').modal('show');
+    window.livewire.on('openUserModal', () => {
+        $('#userModal').modal('show');
     });
 
-    window.addEventListener('confirmDepartmentDelete', event => {
+    window.addEventListener('confirmUserDelete', event => {
         // alert('hey click');
         swal.fire({
             title: event.detail.title,
@@ -30,7 +30,7 @@
             confirmButtonText: event.detail.confirmButtonText,
         }).then((result) => {
             if (result.isConfirmed) {
-                window.livewire.emit('deleteDepartment', event.detail.id)
+                window.livewire.emit('deleteUser', event.detail.id)
                 swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',

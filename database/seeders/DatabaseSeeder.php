@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AccomodationSeeder::class,
             RealEstateTypeSeeder::class,
+            ClientTypeSeeder::class,
         ]);
     }
 }
