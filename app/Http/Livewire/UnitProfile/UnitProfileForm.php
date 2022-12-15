@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Client;
+namespace App\Http\Livewire\UnitProfile;
 
 use Livewire\Component;
-use App\Models\Client;
-use App\Models\ClientType;  
+use App\Models\RealEstateProfile; 
 
-class ClientForm extends Component
+class UnitProfileForm extends Component
 {
-    public $clientId, $client_type_id, $last_name, $first_name, $middle_name, $real_estate_name, $address, $contact_no, $email;
+    public $profileId;
     public $action = '';  //flash
     public $message = '';  //flash
     public $client_type = '';
 
     protected $listeners = [
-        'clientId',
+        'profileId',
         'resetInputFields'
     ];
 
@@ -27,25 +26,14 @@ class ClientForm extends Component
 
     public function render()
     {
-        return view('livewire.client.client-form',[
-            'client_types' => ClientType::all()
-        ]);
-
-       
+        return view('livewire.unit-profile.unit-profile-form');
     }
 
-    public function changeClient($value)
+    public function profileId($profileId)
     {
-        $this->client_type = $value;
-    }
-
-
-    //edit
-    public function clientId($clientId)
-    {
-        $this->clientId = $clientId;
+        $this->profileId = $profileId;
         // dd($this->discountId);
-        $clients = Client::findOrFail($clientId)->first();
+        $clients = RealEstateProfile::findOrFail($profileId)->first();
         $this->client_type_id = $clients->client_type_id;
         $this->last_name = $clients->last_name;
         $this->first_name = $clients->first_name;
@@ -72,19 +60,19 @@ class ClientForm extends Component
             'email' => 'required|email',
             'contact_no' => 'required',
         ]);
-        if ($this->clientId) {
-            Client::whereId($this->clientId)->first()->update($data);
+        if ($this->profileId) {
+            RealEstateProfile::whereId($this->profileId)->first()->update($data);
             $action = 'edit';
-            $message = 'Client Successfully Updated';
+            $message = 'Real Estate Successfully Updated';
         } else {
-            Client::create($data);
+            RealEstateProfile::create($data);
             $action = 'store';
-            $message = 'Client Successfully Updated';
+            $message = 'Real Estate Successfully Updated';
         }
         $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
-        $this->emit('closeClientModal');
-        $this->emit('refreshParentClient');
+        $this->emit('closeRealEstateModal');
+        $this->emit('refreshParentRealEstate');
         $this->emit('refreshTable');
     }
 }

@@ -123,7 +123,7 @@ final class RealEstateTypeTable extends PowerGridComponent
 
             Column::make('Real Estate Type', 'real_estate_type')
                 ->searchable()
-                ->makeInputText('real_estate_type')
+                // ->makeInputText('real_estate_type')
                 ->sortable(),
         ];
     }

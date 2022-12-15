@@ -100,7 +100,7 @@
                                 <a href="{{route('company')}}" class="nav-link">Real Estate Company</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">House/Unit Profile</a>
+                                <a href="{{route('unit-profile')}}" class="nav-link">House/Unit Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('location')}}" class="nav-link">Locations</a>

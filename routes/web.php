@@ -7,6 +7,7 @@ use App\Http\Livewire\Client\ClientList;
 use App\Http\Livewire\Company\CompanyList;
 use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\User\UserList;
+use App\Http\Livewire\UnitProfile\UnitProfileList;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,5 @@ Route::group(['middleware' => [
     Route::get('/company', CompanyList::class)->name('company');
     Route::get('/location', LocationList::class)->name('location');
     Route::get('/user', UserList::class)->name('user');
+    Route::get('/unit-profile', UnitProfileList::class)->name('unit-profile');
 });

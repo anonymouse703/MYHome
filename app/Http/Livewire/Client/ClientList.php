@@ -28,8 +28,18 @@ class ClientList extends Component
 
     public function render()
     {
+        if (empty($this->search)) {
+            $clients  = Client::paginate(10);
+        } else {
+            $clients  = Client::where('last_name', 'LIKE', '%' . $this->search . '%')
+            ->orWhere('middle_name', 'LIKE', '%' . $this->search . '%')
+            ->orWhere('first_name', 'LIKE', '%' . $this->search . '%')
+            ->orWhere('real_estate_name', 'LIKE', '%' . $this->search . '%')
+            ->paginate(10);
+        }
+
         return view('livewire.client.client-list',[
-            'clients' => Client::all()
+            'clients' => $clients
         ]);
     }
 

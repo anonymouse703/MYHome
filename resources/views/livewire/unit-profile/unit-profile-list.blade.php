@@ -5,15 +5,15 @@
             <!-- Table with toolbar -->
             <div class="card">
                 <div class="card-header mb-3">
-                    <h5 class="card-title mb-3">List of Clients</h5>
+                    <h5 class="card-title mb-3">List of Units</h5>
                     <livewire:flash-message.flash-message />
                     <div class="row">
                         <!-- Left toolbar -->
                         <div class="col-md-9 d-flex gap-1 align-items-center mb-3">
-                            <button wire:click="createClient" class="btn btn-primary hstack gap-2 align-self-center">
+                            <button wire:click="createProfile" class="btn btn-primary hstack gap-2 align-self-center">
                                 <i class="demo-psi-add fs-5"></i>
                                 <span class="vr"></span>
-                                Add Client
+                                Add Unit
                             </button>
                         </div>
                         <!-- END : Left toolbar -->
@@ -39,22 +39,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clients as $data)
+                                @foreach ($profiles as $data)
                                 <tr>
-                                    <td>
-                                        @if(!$data->real_estate_name )
-                                        {{$data->last_name ?? ''}},{{$data->first_name ?? ''}},{{$data->middle_name ?? ''}}
-                                        @else
-                                        {{$data->real_estate_name ?? ''}}
-                                        @endif
-                                    </td>
-                                    <td>{{$data->address ?? ''}}</td>
-                                    <td>{{$data->contact_no ?? ''}}</td>
-                                    <td>{{$data->email ?? ''}}</td>
+                                    <td>{{$data->real_estate_type_id ?? ''}}</td>
+                                    <td>{{$data->model_name ?? ''}}</td>
+                                    <td>{{$data->description ?? ''}}</td>
+                                    <td>{{$data->real_estate_company_id ?? ''}}</td>
+                                    <td>{{$data->location_id ?? ''}}</td>
+                                    <td>{{$data->total_units ?? ''}}</td>
+                                    <td>{{$data->total_vacant ?? ''}}</td>
+                                    <td>{{$data->price ?? ''}}</td>
                                     <td class="text-center align-middle">
                                         <div class="btn-group">
-                                            <button wire:click="editClient({{ $data->id }})" class="btn btn-info delete-header m-1 btn-sm" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                            <button wire:click="deleteClient({{ $data->id }})" class="btn btn-danger delete-header m-1 btn-sm" title="Delete"><i class="fa fa-circle" aria-hidden="true"></i></button>
+                                            <button wire:click="editProfile({{ $data->id }})" class="btn btn-info delete-header m-1 btn-sm" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                            <button wire:click="deleteProfile({{ $data->id }})" class="btn btn-danger delete-header m-1 btn-sm" title="Delete"><i class="fa fa-circle" aria-hidden="true"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -70,12 +68,12 @@
     </div>
 
     <!-- The Modal -->
-    <div wire.ignore.self class="modal fade" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="clientModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div wire.ignore.self class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="clientModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog" role="document">
-            <livewire:client.client-form />
+            <livewire:unit-profile.unit-profile-form />
         </div>
     </div>
 </div>
 @section('custom_script')
-@include('layouts.scripts.client-scripts')
+@include('layouts.scripts.unit-profile-scripts')
 @endsection

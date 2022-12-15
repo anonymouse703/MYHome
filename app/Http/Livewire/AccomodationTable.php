@@ -124,7 +124,7 @@ final class AccomodationTable extends PowerGridComponent
 
             Column::make('Accomodation', 'accomodation')
                 ->searchable()
-                ->makeInputText('accomodation')
+                // ->makeInputText('accomodation')
                 ->sortable(),
         ];
     }

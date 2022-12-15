@@ -127,27 +127,22 @@ final class LocationTable extends PowerGridComponent
 
             Column::make('Street', 'street','brgy')
                 ->searchable()
-                ->makeInputText('street')
                 ->sortable(),
 
             Column::make('Barangay', 'brgy')
             ->searchable()
-                ->makeInputText('brgy')
                 ->sortable(),
 
             Column::make('City', 'city')
             ->searchable()
-                ->makeInputText('city')
                 ->sortable(),
 
             Column::make('Province', 'province')
             ->searchable()
-                ->makeInputText('province')
                 ->sortable(),
 
             Column::make('Country', 'country')
             ->searchable()
-                ->makeInputText('country')
                 ->sortable(),
         ];
     }
